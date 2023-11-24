@@ -32,6 +32,10 @@ main {
     padding-bottom: 20px;
 }
 
+form div {
+    display: flex;
+}
+
 .input {
     color: #fff;
     background-color: #272A31;
@@ -53,7 +57,7 @@ main {
 }
 
 .add:hover {
-    background-color: #008c54;
+    background-color: #007f4c;
 }
 
 input + input {
@@ -100,7 +104,7 @@ input + input {
 
 .saved-contacts {
     position: fixed;
-    bottom: 30px;
+    bottom: 20px;
     right: 90px;
     padding: 14px 0;
     width: 200px;
@@ -114,6 +118,7 @@ input + input {
     height: 18px;
     font-size: 16px;
     padding-top: 20px;
+    margin-bottom: 60px;
 }
 
 /* ------------------Media Queries--------------- */
@@ -123,5 +128,15 @@ input + input {
     .grid-container {
         grid-template-columns: repeat(3, 250px); 
         grid-template-rows: repeat(3, 100px);
+    }
+
+    .grid-container div p {
+        font-size: 12px;
+    }
+
+    .saved-contacts {
+        position: fixed;
+        right: 30px;
+        padding: 14px 0;
     }
 }

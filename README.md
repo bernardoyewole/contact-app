@@ -1,7 +1,8 @@
-## Shape Factory
+## Contact App
 
-This is a fun activity where you can create shapes of different colors by clicking a button. On the button click, 
-a ```div``` element is created and appended to a grid container.
+This is a tool used to create and save contacts. On click of the add button, a contact object is created and pushed into a contact array.
+
+A contact card is also created and appended to a grid container. With the ```click``` event, users can  click on any of the cards to delete a contact.
 
 ### Built With
 <p align='center'>
@@ -11,10 +12,10 @@ a ```div``` element is created and appended to a grid container.
 </p>
 
 ## Demo
-Click [here](https://bernardoyewole.github.io/shape-factory/) to check it out.
+Click [here](https://bernardoyewole.github.io/contact-app/) to check it out.
 
 A demo is show below:
 
 <p align='center'>
-<img src='./assets/img/shape-factory.png' height='400px' width='450px'>
+<img src='./assets/img/contact-app.png'>
 </p>

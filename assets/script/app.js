@@ -2,7 +2,7 @@
 
 import { onEvent, select, selectAll, create, print } from "./utils.js";
 
-import author, { Contact } from "./Contact.js";
+import { Contact } from "./Contact.js";
 
 const input = select('.input');
 const addBtn = select('.add');
