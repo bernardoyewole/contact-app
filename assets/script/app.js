@@ -10,13 +10,14 @@ const response = select('.response');
 const gridContainer = select('.grid-container');
 const savedContacts = select('.saved-contacts span');
 const responseTwo = select('.response-2');
+const STORAGE = 9;
 
 let contactArr = [];
 let count = 0;
 
-// onEvent('load', window, () => {
-//     input.value = '';
-// });
+onEvent('load', window, () => {
+    input.value = '';
+});
 
 function isValid(userInput) {
     let arr = userInput.split(',');
@@ -24,7 +25,7 @@ function isValid(userInput) {
         if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(arr[2].trim())) { return true; }
         response.innerText = `Please, enter a valid email address (ex: john@gmail.com)`;
     } else {
-        response.innerText = `Please, enter name, city and email, separated by a comma (,)`;
+        response.innerText = `Please enter name, city and email, separated by a comma ( , )`;
     }
 }
 
@@ -50,6 +51,7 @@ function updateSavedContacts() {
 function createContactCard() {
     let lastContact = contactArr[contactArr.length - 1];
     let card = create('div');
+    card.setAttribute('onclick', 'removeNode(event)');
     let paragraph;
     let arr =  ['name', 'city', 'email'];
     arr.forEach(ele => {
@@ -57,16 +59,45 @@ function createContactCard() {
         paragraph.innerText = `${lastContact[ele]}`;
         card.appendChild(paragraph);
     });
-    gridContainer.appendChild(card);
+    gridContainer.insertBefore(card, gridContainer.firstChild);
 }
 
-onEvent('click', addBtn, () => {
-    if (isValid(input.value) && count < 9) {
+function storageIsFull() {
+    if (count === STORAGE) {
+        responseTwo.innerText = `Storage is full! Click on any contact to delete`;
+    }
+}
+
+function addBtnTriggers() {
+    if (isValid(input.value)) {
         createContact(input.value);
         createContactCard();
         updateSavedContacts();
-    } else {
-        responseTwo.innerText = `Storage is full! Click on any contact to delete`
+        input.value = '';
+        response.innerText = '';
+    }
+}
+
+onEvent('click', addBtn, () => {
+    storageIsFull();
+    if (count < 9) {
+      addBtnTriggers();
+    }
+});
+
+function deleteContact() {
+    count--;
+    updateSavedContacts();
+    responseTwo.innerText = '';
+}
+
+onEvent('click', window, (event) => {
+    if (gridContainer.hasChildNodes()) {
+        gridContainer.childNodes.forEach(node => {
+            if (node.contains(event.target)) {
+                gridContainer.removeChild(node);
+                deleteContact();
+            }
+        });
     }
 })
-
