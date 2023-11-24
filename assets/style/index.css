@@ -14,9 +14,100 @@ main {
     height: 100%;
 }
 
-.contact {
+.contact-page {
     height: 100%;
 }
+
+.contact-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-content h1 {
+    color: #fff;
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+.input {
+    color: #fff;
+    background-color: #272A31;
+    width: 500px;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 2px;
+}
+
+.add {
+    height: 40px;
+    padding: 0 30px;
+    background-color: #009D5D;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.add:hover {
+    background-color: #008c54;
+}
+
+
+input + input {
+    margin-left: 10px;
+}
+
+.response {
+    color: #d5534e;
+    font-size: 14px;
+    padding-top: 3px;
+}
+
+.grid-container {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 300px); 
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
+    padding: 10px;
+    /* transform: rotateX(150deg); */
+}
+
+.grid-container div {
+    background-color: #272A31;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+    gap: 6px;
+    cursor: pointer;
+    border: 1px solid rgba(255 255 255 / 0.1);
+    transition: all 0.3s ease-in-out;
+    border-radius: 3px;
+}
+
+.grid-container div:hover {
+    border: 1px solid #d5534e
+}
+
+.grid-container div p {
+    color: #fff;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
 
 /* ------------------Media style------------------ */
 /* ---------------------------------------------- */
