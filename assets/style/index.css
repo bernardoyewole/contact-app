@@ -111,6 +111,12 @@ input + input {
     color: #fff;
 }
 
+.response-2 {
+    color: #d5534e;
+    height: 18px;
+    font-size: 16px;
+    padding-top: 20px;
+}
 
 
 

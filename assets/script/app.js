@@ -9,6 +9,7 @@ const addBtn = select('.add');
 const response = select('.response');
 const gridContainer = select('.grid-container');
 const savedContacts = select('.saved-contacts span');
+const responseTwo = select('.response-2');
 
 let contactArr = [];
 let count = 0;
@@ -20,7 +21,7 @@ let count = 0;
 function isValid(userInput) {
     let arr = userInput.split(',');
     if (arr.length === 3) {
-        if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(arr[2])) { return true; }
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(arr[2].trim())) { return true; }
         response.innerText = `Please, enter a valid email address (ex: john@gmail.com)`;
     } else {
         response.innerText = `Please, enter name, city and email, separated by a comma (,)`;
@@ -29,9 +30,9 @@ function isValid(userInput) {
 
 function splitUserInput(userInput) {
     let arr = userInput.split(',');
-    let name = arr[0];
-    let city = arr[1];
-    let email = arr[2];
+    let name = arr[0].trim();
+    let city = arr[1].trim();
+    let email = arr[2].trim();
     return [name, city, email];
 }
 
@@ -46,24 +47,26 @@ function updateSavedContacts() {
     savedContacts.innerText = count;
 }
 
-function createContactCard(userInput) {
-    let args = splitUserInput(userInput);
+function createContactCard() {
+    let lastContact = contactArr[contactArr.length - 1];
     let card = create('div');
     let paragraph;
-    for (let i = 0; i < args.length; i++) {
+    let arr =  ['name', 'city', 'email'];
+    arr.forEach(ele => {
         paragraph = create('p');
-        paragraph.innerText = args[i];
+        paragraph.innerText = `${lastContact[ele]}`;
         card.appendChild(paragraph);
-    }
+    });
     gridContainer.appendChild(card);
 }
 
 onEvent('click', addBtn, () => {
-    if (isValid(input.value)) {
+    if (isValid(input.value) && count < 9) {
         createContact(input.value);
-        createContactCard(input.value);
+        createContactCard();
         updateSavedContacts();
+    } else {
+        responseTwo.innerText = `Storage is full! Click on any contact to delete`
     }
-    print(contactArr)
 })
 
