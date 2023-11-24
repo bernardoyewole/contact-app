@@ -63,12 +63,13 @@ input + input {
 
 .response {
     color: #d5534e;
-    font-size: 14px;
+    font-size: 13px;
     padding-top: 3px;
+    height: 18px;
 }
 
 .grid-container {
-    margin-top: 20px;
+    margin-top: 10px;
     display: grid;
     grid-template-columns: repeat(3, 300px); 
     grid-template-rows: repeat(3, 100px);
@@ -97,6 +98,17 @@ input + input {
 .grid-container div p {
     color: #fff;
     font-size: 14px;
+}
+
+.saved-contacts {
+    position: fixed;
+    bottom: 30px;
+    right: 90px;
+    padding: 14px 0;
+    width: 200px;
+    border-radius: 30px;
+    background-color: #4d2673;
+    color: #fff;
 }
 
 
