@@ -119,10 +119,9 @@ input + input {
 /* ------------------Media Queries--------------- */
 /* ---------------------------------------------- */
 
-/* @media screen and (max-width: 580px) {
+@media screen and (max-width: 945px) {
     .grid-container {
-        grid-template-columns: repeat(4, 80px); 
-        grid-template-rows: repeat(6, 92.4px);
-
+        grid-template-columns: repeat(3, 250px); 
+        grid-template-rows: repeat(3, 100px);
     }
-} */
+}

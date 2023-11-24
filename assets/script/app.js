@@ -21,6 +21,7 @@ onEvent('load', window, () => {
 
 function isValid(userInput) {
     let arr = userInput.split(',');
+
     if (arr.length === 3) {
         if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(arr[2].trim())) { return true; }
         response.innerText = `Please, enter a valid email address (ex: john@gmail.com)`;
@@ -34,6 +35,7 @@ function splitUserInput(userInput) {
     let name = arr[0].trim();
     let city = arr[1].trim();
     let email = arr[2].trim();
+
     return [name, city, email];
 }
 
@@ -51,14 +53,15 @@ function updateSavedContacts() {
 function createContactCard() {
     let lastContact = contactArr[contactArr.length - 1];
     let card = create('div');
-    card.setAttribute('onclick', 'removeNode(event)');
     let paragraph;
     let arr =  ['name', 'city', 'email'];
+
     arr.forEach(ele => {
         paragraph = create('p');
         paragraph.innerText = `${lastContact[ele]}`;
         card.appendChild(paragraph);
     });
+
     gridContainer.insertBefore(card, gridContainer.firstChild);
 }
 
@@ -91,10 +94,24 @@ function deleteContact() {
     responseTwo.innerText = '';
 }
 
+function deleteContactObj(element) {
+    let array = element.innerText.split(' ');
+    let emailText = `Email: ${array[array.length - 1]}`;
+    
+    for (let i = 0; i < contactArr.length; i++) {
+        let obj = contactArr[i];
+        if (obj.email === emailText) {
+            contactArr.splice(i, 1);
+            break;
+        }
+    }
+}
+
 onEvent('click', window, (event) => {
     if (gridContainer.hasChildNodes()) {
         gridContainer.childNodes.forEach(node => {
             if (node.contains(event.target)) {
+                deleteContactObj(node);
                 gridContainer.removeChild(node);
                 deleteContact();
             }
